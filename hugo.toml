@@ -2,3 +2,22 @@ baseURL = 'https://example.org/'
 languageCode = 'zh-cn'
 title = '理理斯自留地'
 theme = 'paperMod'
+
+[params]
+showToc = true
+showReadingTime = true
+showShareButtons = false
+enableSearch = true
+
+[params.homeInfoParams]
+Title = "理理斯"
+content = "财务小兵📔 | 热爱胡思乱想"
+
+[params.profileMode]
+enabled = false
+title = "理理斯"
+subtitle = "财务小兵，热爱胡思乱想"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/llt003"
