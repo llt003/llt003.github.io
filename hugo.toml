@@ -1,13 +1,28 @@
 baseURL = 'https://example.org/'
 languageCode = 'zh-cn'
-title = '理理斯自留地'
+title = '理理斯的书斋'
 theme = 'paperMod'
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [params]
 showToc = true
 showReadingTime = true
 showShareButtons = false
 enableSearch = true
+
+[menus]
+  [[menus.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 1
+
+  [[menus.main]]
+    name = "分类"
+    url = "/categories/"
+    weight = 2
 
 [params.homeInfoParams]
 Title = "理理斯"

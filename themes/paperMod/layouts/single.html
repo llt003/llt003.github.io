@@ -45,6 +45,14 @@
   {{- partial "extend_post_content.html" . }}
 
   <footer class="post-footer">
+    {{- if (.GetTerms "categories") }}
+    {{- $cats := .Language.Params.Taxonomies.category | default "categories" }}
+    <ul class="post-tags post-categories">
+      {{- range ($.GetTerms $cats) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}
