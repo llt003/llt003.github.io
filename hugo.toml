@@ -9,20 +9,15 @@ theme = 'paperMod'
 
 [params]
 showToc = true
-showReadingTime = true
+showReadingTime = false
 showShareButtons = false
 enableSearch = true
 
 [menus]
   [[menus.main]]
-    name = "标签"
-    url = "/tags/"
-    weight = 1
-
-  [[menus.main]]
     name = "分类"
     url = "/categories/"
-    weight = 2
+    weight = 1
 
 [params.homeInfoParams]
 Title = "理理斯"

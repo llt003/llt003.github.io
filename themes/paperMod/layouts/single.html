@@ -27,6 +27,30 @@
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
+    {{- $catTerm := .Language.Params.Taxonomies.category | default "categories" }}
+    {{- $tagTerm := .Language.Params.Taxonomies.tag | default "tags" }}
+    {{- $cats := .GetTerms $catTerm }}
+    {{- $tags := .GetTerms $tagTerm }}
+    {{- if or $cats $tags }}
+    <div class="post-taxo">
+      {{- with $cats }}
+      <div class="taxo-row">
+        <span class="taxo-label">分类</span>
+        {{- range . }}
+        <a class="taxo-cat" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+      {{- with $tags }}
+      <div class="taxo-row">
+        <span class="taxo-label">标签</span>
+        {{- range . }}
+        <a class="taxo-tag" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
@@ -44,21 +68,8 @@
 
   {{- partial "extend_post_content.html" . }}
 
+  {{- if (or (.Param "ShowPostNavLinks") (and site.Params.ShowShareButtons (ne .Params.disableShare true))) }}
   <footer class="post-footer">
-    {{- if (.GetTerms "categories") }}
-    {{- $cats := .Language.Params.Taxonomies.category | default "categories" }}
-    <ul class="post-tags post-categories">
-      {{- range ($.GetTerms $cats) }}
-      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-      {{- end }}
-    </ul>
-    {{- end }}
-    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
-    <ul class="post-tags">
-      {{- range ($.GetTerms $tags) }}
-      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-      {{- end }}
-    </ul>
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post_nav_links.html" . }}
     {{- end }}
@@ -66,6 +77,7 @@
     {{- partial "share_icons.html" . -}}
     {{- end }}
   </footer>
+  {{- end }}
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}

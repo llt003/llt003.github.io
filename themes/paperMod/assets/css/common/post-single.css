@@ -56,6 +56,66 @@
     text-decoration-style: dotted;
 }
 
+.post-taxo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.taxo-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.taxo-label {
+    color: var(--secondary);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-inline-end: 2px;
+}
+
+.taxo-row a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    line-height: 26px;
+    padding: 0 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.taxo-cat {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.taxo-cat:hover {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+.taxo-tag {
+    background: var(--code-bg);
+    border-color: var(--border);
+    color: var(--secondary);
+}
+
+.taxo-tag::before {
+    content: "#";
+    opacity: 0.55;
+    margin-inline-end: 2px;
+}
+
+.taxo-tag:hover {
+    background: var(--border);
+    color: var(--primary);
+}
+
 details.toc {
     margin-bottom: var(--content-gap);
     background: var(--code-bg);
